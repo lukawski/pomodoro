@@ -1,0 +1,22 @@
+{
+  "name": "pomodoro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "browser-sync start --server --files \"app, *.html\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukawski/pomodoro.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lukawski/pomodoro/issues"
+  },
+  "homepage": "https://github.com/lukawski/pomodoro#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.6"
+  }
+}
