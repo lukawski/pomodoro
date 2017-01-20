@@ -39,17 +39,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   for (let i = 0; i < btnsL; i++) {
     btns[i].addEventListener('click', e => {
-      if (e.target.attributes[1].value === 'session') {
-        let newV = Math.floor(clock.getSession() / 60)
-        e.target.innerText === '+' ? newV++ : newV--
-        clock.setSession(newV * 60)
-        sL.innerText = newV
-      } else {
-        let newV = Math.floor(clock.getPause() / 60)
-        e.target.innerText === '+' ? newV++ : newV--
-        clock.setPause(newV * 60)
-        bL.innerText = newV
-      }
+      if (box.getAttribute('data-status') === 'off') {
+        if (e.target.attributes[1].value === 'session') {
+          let newV = Math.floor(clock.getSession() / 60)
+          e.target.innerText === '+' ? newV++ : newV--
+          clock.setSession(newV * 60)
+          sL.innerText = newV
+          box.innerText = newV
+          rem = 0
+        } else {
+          let newV = Math.floor(clock.getPause() / 60)
+          e.target.innerText === '+' ? newV++ : newV--
+          clock.setPause(newV * 60)
+          bL.innerText = newV
+        }
+      } else return true
     })
   }
 
