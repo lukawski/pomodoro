@@ -2,6 +2,7 @@ class Pomodoro {
   constructor (session, pause) {
     this.session = session
     this.pause = pause
+    this.sessionInterval = 0
   }
 
   getSession () {
@@ -22,12 +23,16 @@ class Pomodoro {
 }
 
 document.addEventListener('DOMContentLoaded', function (e) {
-  var clock = new Pomodoro(15, 300)
+  var clock = new Pomodoro(15, 30)
   var sessionInterval = 0
   var pauseInterval = 0
   var leftBox = document.getElementById('left')
 
   document.getElementById('start').addEventListener('click', function () {
+    session()
+  })
+
+  function session () {
     let counter = clock.getSession()
     let minutes = 0
     let seconds = 0
@@ -36,11 +41,26 @@ document.addEventListener('DOMContentLoaded', function (e) {
       minutes = (Math.floor(counter / 60) < 10) ? '0' + Math.floor(counter / 60) : Math.floor(counter / 60)
       seconds = (counter % 60 < 10) ? '0' + counter % 60 : counter % 60
       leftBox.innerText = minutes + ':' + seconds
-      if (counter === 0) clearInterval(sessionInterval)
+      if (counter === 0) {
+        clearInterval(sessionInterval)
+        pause()
+      }
     }, 1000)
-  })
+  }
 
-  document.getElementById('stop').addEventListener('click', function () {
-    clearInterval(sessionInterval)
-  })
+  function pause () {
+    let counter = clock.getPause()
+    let minutes = 0
+    let seconds = 0
+    pauseInterval = setInterval(function () {
+      counter--
+      minutes = (Math.floor(counter / 60) < 10) ? '0' + Math.floor(counter / 60) : Math.floor(counter / 60)
+      seconds = (counter % 60 < 10) ? '0' + counter % 60 : counter % 60
+      leftBox.innerText = minutes + ':' + seconds
+      if (counter === 0) {
+        clearInterval(pauseInterval)
+        session()
+      }
+    }, 1000)
+  }
 })
