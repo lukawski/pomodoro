@@ -8,7 +8,15 @@
     <script src="app/index.js"></script>
   </head>
   <body>
-  <div id="left"></div>
-  <button type="button" id="start">Start</button>
+  <div>
+    <button class="btn" data-target="session">+</button>
+    <span id="sL">25</span>
+    <button class="btn" data-target="session">-</button>
+
+    <button class="btn" data-target="break">+</button>
+    <span id="bL">5</span>
+    <button class="btn" data-target="break">-</button>
+  </div>
+  <div id="session" data-mode="session" data-status="off">25</div>
   </body>
 </html>
