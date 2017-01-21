@@ -45,13 +45,19 @@ document.addEventListener('DOMContentLoaded', () => {
           e.target.innerText === '+' ? newV++ : newV--
           clock.setSession(newV * 60)
           sL.innerText = newV
-          box.innerText = newV
-          rem = 0
+          if (box.getAttribute('data-mode') === 'session') {
+            box.innerText = newV
+            rem = 0
+          }
         } else {
           let newV = Math.floor(clock.getPause() / 60)
           e.target.innerText === '+' ? newV++ : newV--
           clock.setPause(newV * 60)
           bL.innerText = newV
+          if (box.getAttribute('data-mode') === 'break') {
+            box.innerText = newV
+            rem = 0
+          }
         }
       } else return true
     })
