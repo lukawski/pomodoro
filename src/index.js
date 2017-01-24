@@ -73,6 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let start = r => {
     box.setAttribute('data-status', 'on')
     let counter = 0
+    let color = (box.getAttribute('data-mode') === 'session') ? '#2E7D32' : '#B71C1C'
+    let full = (box.getAttribute('data-mode') === 'session') ? clock.getSession() : clock.getPause()
     if (r) counter = r
     else {
       if (box.getAttribute('data-mode') === 'session') counter = clock.getSession()
@@ -80,12 +82,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     let minutes = 0
     let seconds = 0
+    let a = 0
     interval = setInterval(() => {
       counter--
       rem = counter
       minutes = (Math.floor(counter / 60) < 10) ? '0' + Math.floor(counter / 60) : Math.floor(counter / 60)
       seconds = (counter % 60 < 10) ? '0' + counter % 60 : counter % 60
+      a = full - counter
       box.innerText = minutes + ':' + seconds
+      box.setAttribute('style', `background: linear-gradient(0deg, ${color} ${a / full * 100}%, #262626 0%);`)
+      console.log(a / full * 100, full)
       if (counter === 0) {
         clearInterval(interval)
         box.getAttribute('data-mode') === 'session' ? box.setAttribute('data-mode', 'break') : box.setAttribute('data-mode', 'session')
