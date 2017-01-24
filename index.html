@@ -8,15 +8,21 @@
     <script src="app/index.js"></script>
   </head>
   <body>
-  <div>
-    <button class="btn" data-target="session">+</button>
-    <span id="sL">25</span>
-    <button class="btn" data-target="session">-</button>
+    <div class="container">
+      <div class="row">
+        <div class="column r">
+          <span class="btn" data-target="session">+</span>
+          <span id="sL">25</span>
+          <span class="btn" data-target="session">-</span>
+        </div>
+        <div class="column">
+          <span class="btn" data-target="break">+</span>
+          <span id="bL">5</span>
+          <span class="btn" data-target="break">-</span>
+        </div>
+      </div>
 
-    <button class="btn" data-target="break">+</button>
-    <span id="bL">5</span>
-    <button class="btn" data-target="break">-</button>
-  </div>
-  <div id="session" data-mode="session" data-status="off">25</div>
+      <div id="session" data-mode="session" data-status="off" class="box">25</div>
+    </div>
   </body>
 </html>

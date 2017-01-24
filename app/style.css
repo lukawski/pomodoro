@@ -1,0 +1,42 @@
+body {
+  background: #262626;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+.container {
+  width: 100%;
+  font-size: 2em;
+  font-family: "Arial Black", Gadget, sans-serif;
+  color: #bfbfbf;
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.column {
+  width: 40%;
+}
+
+.r {
+  text-align: right;
+}
+
+.box {
+  font-size: 2.5em;
+  text-align: center;
+  cursor: pointer;
+  width: 300px;
+  height: 300px;
+  border: 1px solid white;
+  border-radius: 50%;
+  line-height: 300px;
+  margin: 0 auto;
+  margin-top: 2em;
+}
